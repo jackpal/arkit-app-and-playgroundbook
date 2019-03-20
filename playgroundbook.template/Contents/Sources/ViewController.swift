@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  arkit2
+//  arkit
 //
-//  Created by Jack Palevich on 3/19/19.
+//  Created by Jack Palevich on 3/17/19.
 //  Copyright © 2019 Jack Palevich. All rights reserved.
 //
 
@@ -14,13 +14,9 @@ public class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override func loadView() {
+        sceneView = ARSCNView()
 
-      sceneView = ARSCNView(frame: .zero)
-      self.view = sceneView
-      self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -32,6 +28,8 @@ public class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+
+        view = sceneView
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -62,18 +60,5 @@ public class ViewController: UIViewController, ARSCNViewDelegate {
     }
 */
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
 }
